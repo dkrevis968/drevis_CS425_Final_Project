@@ -9,17 +9,19 @@ namespace BTree
     {
         public List<Node> children;
 
+        public Node() { children = new List<Node>(); }
+
         public void addChild(Node node)
         {
-            children.Add(node);
+            this.children.Add(node);
         }
 
-        public bool run() { return false; }
+        public virtual bool run() { return false; }
     }
 
     class SelectorNode : Node
     {
-        new bool run()
+        public override bool run()
         {
             foreach (Node child in children)
             {
@@ -35,7 +37,7 @@ namespace BTree
 
     class SequenceNode : Node
     {
-        new bool run()
+        public override bool run()
         {
             foreach (Node child in children)
             {
